@@ -1,0 +1,15 @@
+# Step 1: Use an official OpenJDK image from Docker Hub
+FROM openjdk:11-jre-slim
+
+# Step 2: Set the working directory in the container
+WORKDIR /app
+
+# Step 3: Copy the jar file into the container
+# Make sure to build the jar file first (e.g., mvn clean package)
+COPY target/spring-boot-crud-example-*.jar app.jar
+
+# Step 4: Expose the port that Spring Boot will use (default is 8080)
+EXPOSE 8080
+
+# Step 5: Run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
